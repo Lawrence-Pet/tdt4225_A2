@@ -1,2 +1,6 @@
 venv
 .pycahche
+pyvenv.cfg
+bin/*
+lib/*
+lib64
