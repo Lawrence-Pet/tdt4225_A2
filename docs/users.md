@@ -4,4 +4,4 @@ user | created
 --- | ---
 Admin | 28.09.2023
 
-t
+Passwords stored as env variables locally
