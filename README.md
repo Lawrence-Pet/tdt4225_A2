@@ -1,1 +1,3 @@
-# tdt4225_A2
+# Fredrik og Peter hacker og styrer på
+
+✅✅✅✅✅✅✅✅✅✅
