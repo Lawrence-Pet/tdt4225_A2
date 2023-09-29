@@ -1,4 +1,5 @@
 venv
-.pycahche
+__pycahche__
 dataset
 *.code-workspace
+*pyc
