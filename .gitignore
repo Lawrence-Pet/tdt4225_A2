@@ -1,5 +1,11 @@
 venv
-__pycahche__
-dataset
 *.code-workspace
 *pyc
+pyvenv.cfg
+bin
+lib
+lib64
+include
+dataset
+.env
+__pycache__
