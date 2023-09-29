@@ -29,10 +29,9 @@ def get_files_in_folder(directory_name: str) -> list:
     Takes a directory_name, and returns a list of files in the folder.
     """
     folder_path = data_path + "/" + directory_name + "/Trajectory"
-    files = os.listdir(folder_path)
-
+    files = os.listdir(folder_path) 
     # removing any files that should not be there 
-    files_filtered = [fnmatch.filter(file, '*.plt') for file in files]
+    files_filtered = fnmatch.filter(files, '*.plt')
     return files_filtered
 
 def get_labels(directory_name) -> pd.DataFrame:
@@ -52,4 +51,6 @@ def get_labels(directory_name) -> pd.DataFrame:
     
 
 if __name__ == '__main__':
-    get_labels("010")
+    print(get_labels("010"))
+    print(get_files_in_folder("010"))
+    
