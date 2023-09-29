@@ -5,7 +5,7 @@ def create_tables(db_connector):
     table_definitions = [
         "user_id VARCHAR(255), has_labels boolean",
         "activity_id INT AUTO_INCREMENT, FOREIGN KEY (user_id) references USER(user_id), transportation_mode VARCHAR(255), start_date_time DATETIME, end_date_time DATETIME",
-        "trackpoint_id INT AUTO_INCREMENT, FOREIGN KEY (activity_id) references Activity(activity_id), lat DOUBLE, lon DOUBLE, altitude INT, date_days DOUBLE, date_time DATETIME"
+        "trackpoint_id INT AUTO_INCREMENT, FOREIGN KEY (activity_id) references Activity(activity_id), lat DOUBLE, lon DOUBLE, altitude INT, date_time DATETIME"
     ]
     try:
         for table_name, table_definition in table_names, table_definitions:
@@ -25,3 +25,14 @@ def insert_data(db_connector, table_name, data):
     except Exception as e:
         print(f"Error inserting data into table '{table_name}': {e}")
         db_connector.db_connection.rollback()
+
+
+def insert_user(db_connector, user_id, has_labels):
+    insert_data(db_connector, "User", f"'{user_id}', {has_labels}")
+
+def insert_activity(db_connector, user_id, transportation_mode, start_date_time, end_date_time):
+    insert_data(db_connector, "Activity", f"'{user_id}', '{transportation_mode}', '{start_date_time}', '{end_date_time}'")
+
+def insert_trackpoint(db_connector, activity_id, lat, lon, altitude, date_time):
+    insert_data(db_connector, "TrackPoint", f"'{activity_id}', '{lat}', '{lon}', '{altitude}', '{date_time}'")
+
