@@ -1,5 +1,6 @@
 venv
-.pycache
+*.code-workspace
+*pyc
 pyvenv.cfg
 bin
 lib
