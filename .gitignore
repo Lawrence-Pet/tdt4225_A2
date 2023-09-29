@@ -1,9 +1,10 @@
 venv
-.pycahche
+.pycache
 pyvenv.cfg
-bin/*
-lib/*
+bin
+lib
 lib64
-include/*
-dataset/*
+include
+dataset
 .env
+__pycache__
