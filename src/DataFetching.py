@@ -35,13 +35,21 @@ def get_files_in_folder(directory_name: str) -> list:
     files_filtered = [fnmatch.filter(file, '*.plt') for file in files]
     return files_filtered
 
-def get_labels(directory_name) -> (bool, list):
+def get_labels(directory_name) -> pd.DataFrame:
     path = data_path + "/" + directory_name + "/labels.txt"
     # splits data based on space giving the following columns: 
     # date, clock_time, date, clock_time, transport_mode
-    labels = np.genfromtxt(path, skip_header=1, dtype=str)
-    print(labels[0:5])
-    pass
+    try:
+        labels = np.genfromtxt(path, skip_header=1, dtype=str)
+        return pd.DataFrame(labels, columns=['start_time', 
+                                        'start_clock', 
+                                        'end_time', 
+                                        'end_clock', 
+                                        'transportation_mode']
+                                        )
+    except Exception as e:
+        raise Exception("shit happened: ", e)
+    
 
 if __name__ == '__main__':
     get_labels("010")
