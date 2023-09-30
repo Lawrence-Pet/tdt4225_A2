@@ -8,10 +8,39 @@ from itertools import filterfalse
 import fnmatch
 import pandas as pd
 import numpy as np
+from typing import List
 
 data_path = "../dataset/Data"
 
+#--------------Classes---------------------#
 
+class Activity: 
+
+    def __init__(self, user: str, trackpoints_path: str) -> None:
+        self.start = None
+        self.end = None
+        self.user = user
+        self.trackpoints = trackpoints_path
+        self.transport_m = None
+    
+    def get_track_points(self) -> (bool, pd.DataFrame):
+        """
+        Returns dataframe with plotpoints but also sets start_time and end_time of activity
+        """
+        try: 
+            df = plt_to_df(self.trackpoints)
+            self.start = df['Date_DS'].iloc[0]
+            self.end = df['Date_DS'].iloc[-1]
+            
+            if len(df) > 2500: 
+                return False, df
+            else: 
+                return True, df
+        except Exception as e: 
+            print("Exception in get_track_points function:\n ", e)
+            raise Exception(e)
+
+# -------------Functions-------------------#
 def plt_to_df(file) -> pd.DataFrame:
     """
     Reads each activity entry up to 2500 points
@@ -21,7 +50,7 @@ def plt_to_df(file) -> pd.DataFrame:
 
     df = pd.read_csv(file, skiprows=6, header=None)
     df.columns = ['Latitude', 'Longitude', 'None', 'Altitude', 'Date_DS', 'Date', 'Time']
-    df = df.drop['None', 'Date', 'Time']
+    df = df.drop(columns=['None', 'Date', 'Time'])
     return df
 
 def get_files_in_folder(directory_name: str) -> list:
@@ -62,10 +91,24 @@ def get_labels(user_name) -> pd.DataFrame:
     except Exception as e:
         print("Something bad happened here in get_labels() ", e)
         exit()
-    
+def get_activities(user: str) -> List[Activity]:
+    files = get_plt_files(user)
+    activities: list[Activity] = []
+    for file in files: 
+        path = data_path + "/" + user + "/Trajectory/" + file
+        activities.append(Activity(user, path))
 
+    return activities
+
+
+## primarily used for testing
 if __name__ == '__main__':
     #print(get_labels("010"))
-    print(get_plt_files("010"))
-    print(get_users())
+    #print(get_plt_files("010"))
+    activities = get_activities('000')
+    points = activities[0].get_track_points()
+    a = activities[0]
+    print(f'User: {a.user}    start: {a.start}    end: {a.end}    path: {a.trackpoints}')
+
+    
     
