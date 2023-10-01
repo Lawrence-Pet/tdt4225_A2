@@ -8,7 +8,7 @@ def create_tables(db_connector):
         "trackpoint_id INT AUTO_INCREMENT, FOREIGN KEY (activity_id) references Activity(activity_id), lat DOUBLE, lon DOUBLE, altitude INT, date_days DOUBLE, date_time DATETIME"
     ]
     try:
-        for table_name, table_definition in table_names, table_definitions:
+        for table_name, table_definition in zip(table_names, table_definitions):
             create_table_query = f"CREATE TABLE IF NOT EXISTS {table_name} ({table_definition})"
             db_connector.cursor.execute(create_table_query)
             print(f"Table '{table_name}' created successfully.")
