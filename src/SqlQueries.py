@@ -3,9 +3,9 @@
 def create_tables(db_connector):
     table_names = ["User", "Activity", "TrackPoint"]
     table_definitions = [
-        "user_id VARCHAR(255), has_labels boolean",
-        "activity_id INT AUTO_INCREMENT, FOREIGN KEY (user_id) references USER(user_id), transportation_mode VARCHAR(255), start_date_time DATETIME, end_date_time DATETIME",
-        "trackpoint_id INT AUTO_INCREMENT, FOREIGN KEY (activity_id) references Activity(activity_id), lat DOUBLE, lon DOUBLE, altitude INT, date_days DOUBLE, date_time DATETIME"
+        "user_id VARCHAR(255) NOT NULL, has_labels boolean, PRIMARY KEY (user_id)",
+        "activity_id INT NOT NULL AUTO_INCREMENT, user_id VARCHAR(255), transportation_mode VARCHAR(255), start_date_time DATETIME, end_date_time DATETIME, PRIMARY KEY (activity_id), FOREIGN KEY (user_id) references User(user_id)",
+        "trackpoint_id INT NOT NULL AUTO_INCREMENT, activity_id INT, lat DOUBLE, lon DOUBLE, altitude INT, date_days DOUBLE, date_time DATETIME, PRIMARY KEY (trackpoint_id), FOREIGN KEY (activity_id) references Activity(activity_id)"
     ]
     try:
         for table_name, table_definition in zip(table_names, table_definitions):
