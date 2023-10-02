@@ -82,15 +82,20 @@ def get_labels(user_name) -> pd.DataFrame:
     # date, clock_time, date, clock_time, transport_mode
     try:
         labels = np.genfromtxt(path, skip_header=1, dtype=str)
-        return pd.DataFrame(labels, columns=['start_time', 
+        
+        
+        df = pd.DataFrame(labels, columns=['start_time', 
                                         'start_clock', 
                                         'end_time', 
                                         'end_clock', 
                                         'transportation_mode']
                                         )
+        df = time_and_date_to_datetime(df)
+        return df
     except Exception as e:
         print("Something bad happened here in get_labels() ", e)
         exit()
+
 def get_activities(user: str) -> List[Activity]:
     files = get_plt_files(user)
     activities: list[Activity] = []
@@ -100,6 +105,12 @@ def get_activities(user: str) -> List[Activity]:
 
     return activities
 
+def time_and_date_to_datetime(df: pd.DataFrame) -> pd.DataFrame:
+    start = pd.to_datetime(df['start_time'] + " " + df['start_clock'])
+    end = pd.to_datetime(df['end_time'] + " " + df['end_clock'])
+    df['start_date_time'] = start
+    df['end_date_time'] = end
+    return(df.drop(columns=['start_time', 'start_clock', 'end_time', 'end_clock']))
 
 ## primarily used for testing
 if __name__ == '__main__':
@@ -108,7 +119,7 @@ if __name__ == '__main__':
     activities = get_activities('000')
     points = activities[0].get_track_points()
     a = activities[0]
-    print(f'User: {a.user}    start: {a.start}    end: {a.end}    path: {a.trackpoints}')
-
+    #print(f'User: {a.user}    start: {a.start}    end: {a.end}    path: {a.trackpoints}')
+    print(get_labels('010'))
     
     
