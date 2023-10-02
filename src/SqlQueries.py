@@ -17,9 +17,26 @@ def create_tables(db_connector):
 
 
 def insert_data(db_connector, table_name, data):
+    """
+    Inserts one row to the database.
+    """
     try:
         insert_query = f"INSERT INTO {table_name} VALUES {data}"
         db_connector.cursor.execute(insert_query)
+        db_connector.db_connection.commit()
+        print(f"Data inserted into table '{table_name}' successfully.")
+    except Exception as e:
+        print(f"Error inserting data into table '{table_name}': {e}")
+        db_connector.db_connection.rollback()
+
+# 
+def insert_bulk_data(db_connector, table_name, datatuples, format_string: str):
+    """
+    Inserts multiple rows to the database.
+    """
+    try:
+        insert_query = f"INSERT INTO {table_name} VALUES ({format_string})"
+        db_connector.cursor.executemany(insert_query, datatuples)
         db_connector.db_connection.commit()
         print(f"Data inserted into table '{table_name}' successfully.")
     except Exception as e:

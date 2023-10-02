@@ -91,6 +91,7 @@ def get_labels(user_name) -> pd.DataFrame:
     except Exception as e:
         print("Something bad happened here in get_labels() ", e)
         exit()
+        
 def get_activities(user: str) -> List[Activity]:
     files = get_plt_files(user)
     activities: list[Activity] = []
@@ -108,7 +109,9 @@ if __name__ == '__main__':
     activities = get_activities('000')
     points = activities[0].get_track_points()
     a = activities[0]
+
     print(f'User: {a.user}    start: {a.start}    end: {a.end}    path: {a.trackpoints}')
+    print(f'One row: \n{points[1].iloc[0]}')
 
     
     
