@@ -119,7 +119,14 @@ if __name__ == '__main__':
     activities = get_activities('000')
     points = activities[0].get_track_points()
     a = activities[0]
+
     #print(f'User: {a.user}    start: {a.start}    end: {a.end}    path: {a.trackpoints}')
     print(get_labels('010'))
+
+
+    print(f'User: {a.user}    start: {a.start}    end: {a.end}    path: {a.trackpoints}')
+    print(f'One row: \n{points[1].iloc[0]}')
+
+
     
     
