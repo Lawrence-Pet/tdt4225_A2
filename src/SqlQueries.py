@@ -18,7 +18,7 @@ def create_tables(db_connector):
 
 def insert_data(db_connector, table_name, data):
     try:
-        insert_query = f"INSERT INTO {table_name} VALUES ({data})"
+        insert_query = f"INSERT INTO {table_name} VALUES {data}"
         db_connector.cursor.execute(insert_query)
         db_connector.db_connection.commit()
         print(f"Data inserted into table '{table_name}' successfully.")
