@@ -12,8 +12,10 @@ def main():
     dbc = DbConnector()
     users = DaF.get_users()
     ## INSERT USERS TO DB
-
+    SQ.create_tables(dbc)
+    
     for user in users:
+        SQ.insert_data(dbc, "User (user_id, has_labels)", (user, None))    
         activities = DaF.get_activities(user)
         
         for activity in activities: 
@@ -25,7 +27,7 @@ def main():
                 ## BULK INSERT TRACKPOINTS TO DB
                 df = plotpoints
                 data_tuples = list(df.itertuples(index=False, name=None))
-                SQ.insert_bulk_data(dbc, "TrackPoint ("+TRACKPOINT_LABELS+")", data_tuples)
+                SQ.insert_bulk_data(dbc, "TrackPoint ("+TRACKPOINT_LABELS+")", data_tuples, "%s, %s, %s, %s, %s")
 
 
 if __name__ == '__main__':
