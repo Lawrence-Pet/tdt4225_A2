@@ -1,8 +1,11 @@
 import mysql.connector as mysql
 from decouple import config
 
-DB_USERNAME = config('USER')
-DB_PASSWORD = config('PASS')
+DB_USERNAME = config('DB_USER')
+DB_PASSWORD = config('PASSWORD')
+DB_NAME = config('DB_NAME')
+DB_HOST = config('DB_HOST')
+PORT = config('DB_PORT')
 
 
 class DbConnector:
@@ -19,16 +22,17 @@ class DbConnector:
     """
 
     def __init__(self,
-                 HOST="tdt4225-30.idi.ntnu.no",
-                 DATABASE="DATABASE_NAME",
-                 USER="DB_USERNAME",
-                 PASSWORD="DB_PASSWORD"):
+                 HOST=DB_HOST,
+                 DATABASE=DB_NAME,
+                 USER=DB_USERNAME,
+                 PASSWORD=DB_PASSWORD):
         # Connect to the database
         try:
-            self.db_connection = mysql.connect(host=HOST, database=DATABASE, user=USER, password=PASSWORD, port=3306)
+            self.db_connection = mysql.connect(host=HOST, database=DATABASE, user=USER, password=PASSWORD, port=PORT)
         except Exception as e:
             print("ERROR: Failed to connect to db:", e)
-
+            print(DB_USERNAME, HOST, PASSWORD)
+            exit()
         # Get the db cursor
         self.cursor = self.db_connection.cursor()
 
