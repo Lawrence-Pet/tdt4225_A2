@@ -29,6 +29,7 @@ def insert_users():
 def insert_activities_and_trackpoints(user):
     activities = DaF.get_activities(user)
 
+
 def main():
 
     dbc = DbConnector()

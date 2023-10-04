@@ -1,3 +1,6 @@
+from DbConnector import DbConnector
+from pet_log import get_logger
+logger = get_logger('SQL PART2')
 # Question 1: How many users, activities, and trackpoints are there in the dataset
 count_users_query = "SELECT COUNT(*) FROM User"
 count_activities_query = "SELECT COUNT(*) FROM Activity"
@@ -70,3 +73,24 @@ GROUP BY user_id
 ORDER BY total_altitude_gain DESC
 LIMIT 15
 """
+
+def query_to_db(db_connector: DbConnector, query = None):
+    
+    if query != None:
+        try:
+            #db_connector.cursor.execute(query)
+            logger.debug(f"Executing: {query}")
+            for result in db_connector.cursor.execute(query, multi=True):
+                if result.with_rows:
+                    print("Rows produced by statement '{}':".format(result.statement))
+                    print(result.fetchall())
+                else:
+                    print("Number of rows affected by statement '{}': {}".format(
+                    result.statement, result.rowcount))
+            return True
+        except Exception as e:
+            logger.error(f"Error executing query '{query}':\n {e}")
+            return False
+        
+    logger.error("No query was passed.")
+    return False
