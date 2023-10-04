@@ -1,4 +1,6 @@
+from pet_log import get_logger
 
+logger = get_logger('sql_queries')
 
 def create_tables(db_connector):
     table_names = ["User", "Activity", "TrackPoint"]
@@ -11,9 +13,9 @@ def create_tables(db_connector):
         for table_name, table_definition in zip(table_names, table_definitions):
             create_table_query = f"CREATE TABLE IF NOT EXISTS {table_name} ({table_definition})"
             db_connector.cursor.execute(create_table_query)
-            print(f"Table '{table_name}' created successfully.")
+            logger.debug(f"Table '{table_name}' created successfully.")
     except Exception as e:
-        print(f"Error creating table '{table_name}': {e}")
+        logger.error(f"Error creating table '{table_name}': {e}")
 
 
 def insert_data(db_connector, table_name, data, format_string):
@@ -22,18 +24,15 @@ def insert_data(db_connector, table_name, data, format_string):
     """
     try:
         insert_query = f"INSERT INTO {table_name} VALUES ({format_string})"
-        print(insert_query)
         db_connector.cursor.execute(insert_query, data)
         db_connector.db_connection.commit()
-        print(f"Data inserted into table '{table_name}' successfully.")
-        e = None
-        check = True
+        logger.debug(f"Data inserted into table '{table_name}' successfully.")
+        return True, None
     except Exception as e:
-        print(f"Error inserting data into table '{table_name}': {e}")
+        logger.error(f"Error inserting data into table '{table_name}': {e}")
         db_connector.db_connection.rollback()
-        check = False
-    finally:
-        return check, e
+        return False, e
+    
 
 # 
 def insert_bulk_data(db_connector, table_name, datatuples, format_string: str):
@@ -44,8 +43,11 @@ def insert_bulk_data(db_connector, table_name, datatuples, format_string: str):
         insert_query = f"INSERT INTO {table_name} VALUES ({format_string})"
         db_connector.cursor.executemany(insert_query, datatuples)
         db_connector.db_connection.commit()
-        print(f"Data inserted into table '{table_name}' successfully.")
+        logger.debug(f"Data inserted into table '{table_name}' successfully.")
     except Exception as e:
-        print(f"Error inserting data into table '{table_name}': {e}")
+        logger.error(f"Error inserting data into table '{table_name}': {e}")
         db_connector.db_connection.rollback()
 
+def get_last_rowid(db_connector):
+    rowid = db_connector.cursor.lastrowid
+    return rowid
