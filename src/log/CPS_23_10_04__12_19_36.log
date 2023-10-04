@@ -1,0 +1,286 @@
+2023-10-04 12:19:36,850 sql_queries DEBUG Table 'User' created successfully.
+2023-10-04 12:19:36,901 sql_queries DEBUG Table 'Activity' created successfully.
+2023-10-04 12:19:36,960 sql_queries DEBUG Table 'TrackPoint' created successfully.
+2023-10-04 12:19:36,982 sql_queries DEBUG Data inserted into table 'User (user_id, has_labels)' successfully.
+2023-10-04 12:19:37,015     main  INFO Skipping activity: ../dataset/Data/049/Trajectory/20090902130325.plt due to Exception:
+       Latitude   Longitude     Altitude                      datetime
+0     39.975738  116.331174   305.673468 2009-09-02 13:03:25.000004352
+1     39.975786  116.331260   308.930305 2009-09-02 13:03:29.999997696
+2     39.975701  116.331196   307.088911 2009-09-02 13:03:35.000000512
+3     39.975701  116.331196   307.088911 2009-09-02 13:03:37.999998464
+4     39.975700  116.331189   301.406490 2009-09-02 13:03:40.000003328
+...         ...         ...          ...                           ...
+2609  40.967805  117.930953  1055.282431 2009-09-02 17:20:14.999996928
+2610  40.967774  117.930981  1054.833780 2009-09-02 17:20:19.999999232
+2611  40.967689  117.930989  1054.067536 2009-09-02 17:20:25.000002560
+2612  40.967873  117.930966  1052.288947 2009-09-02 17:24:25.000004608
+2613  40.967868  117.930967  1052.303264 2009-09-02 17:24:29.999997952
+
+[2614 rows x 4 columns]
+2023-10-04 12:19:37,068 sql_queries DEBUG Data inserted into table 'User (user_id, has_labels)' successfully.
+2023-10-04 12:19:37,116 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:37,143 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:37,179 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:37,236 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:37,254 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:37,312 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:37,331 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:37,358 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:37,385 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:37,462 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:37,485 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:37,564 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:37,593     main  INFO Skipping activity: ../dataset/Data/044/Trajectory/20090224231437.plt due to Exception:
+       Latitude   Longitude  Altitude                      datetime
+0     40.079084  116.326370       491 2009-02-24 23:14:37.000000256
+1     40.079112  116.326369       490 2009-02-24 23:14:42.000002560
+2     40.079106  116.326432       488 2009-02-24 23:14:46.999996928
+3     40.079125  116.326492       487 2009-02-24 23:14:51.999999232
+4     40.079145  116.326551       485 2009-02-24 23:14:57.000002048
+...         ...         ...       ...                           ...
+4045  40.078898  116.325945       241 2009-02-25 12:09:55.999995904
+4046  40.078957  116.325920       230 2009-02-25 12:10:00.999998208
+4047  40.079000  116.325797       231 2009-02-25 12:10:06.000001024
+4048  40.078851  116.325664       232 2009-02-25 12:10:11.000003328
+4049  40.078767  116.325549       231 2009-02-25 12:10:15.999997440
+
+[4050 rows x 4 columns]
+2023-10-04 12:19:37,614 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:37,668 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:37,692     main  INFO Skipping activity: ../dataset/Data/044/Trajectory/20090408005904.plt due to Exception:
+       Latitude   Longitude  Altitude                      datetime
+0     39.974905  116.333525       492 2009-04-08 00:59:03.999998464
+1     39.974772  116.333580       492 2009-04-08 00:59:10.000003072
+2     39.974820  116.333615       494 2009-04-08 00:59:14.999996928
+3     39.974829  116.333634       495 2009-04-08 00:59:19.999999744
+4     39.974743  116.333664       496 2009-04-08 00:59:25.000002560
+...         ...         ...       ...                           ...
+2803  39.973568  116.334868       321 2009-04-08 08:11:48.000001792
+2804  39.973521  116.334787       325 2009-04-08 08:11:52.999995904
+2805  39.973477  116.334727       326 2009-04-08 08:11:57.999998208
+2806  39.973436  116.334703       328 2009-04-08 08:12:03.000000768
+2807  39.973412  116.334652       330 2009-04-08 08:12:08.000003840
+
+[2808 rows x 4 columns]
+2023-10-04 12:19:37,715 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:37,785 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:37,828 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:37,841 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:37,870 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:37,891 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:37,912 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:37,930 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:37,956 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:37,991 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:38,018 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:38,125 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:38,142 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:38,165 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:38,203 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:38,233 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:38,259 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:38,381 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:38,434 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:38,573 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:38,596 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:38,620 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:38,643 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:38,687 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:38,714     main  INFO Skipping activity: ../dataset/Data/044/Trajectory/20090219053559.plt due to Exception:
+       Latitude   Longitude  Altitude                      datetime
+0     39.970737  116.332248       492 2009-02-19 05:35:59.000003328
+1     39.970091  116.331984       491 2009-02-19 05:36:03.999997440
+2     39.970099  116.331961       492 2009-02-19 05:36:09.000000000
+3     39.970177  116.331955       492 2009-02-19 05:36:14.000002560
+4     39.970221  116.331947       491 2009-02-19 05:36:18.999996672
+...         ...         ...       ...                           ...
+3360  40.078811  116.325438       256 2009-02-19 11:45:23.999998720
+3361  40.078785  116.325341       268 2009-02-19 11:45:29.000001536
+3362  40.078740  116.325246       277 2009-02-19 11:45:34.000004352
+3363  40.078716  116.325146       287 2009-02-19 11:45:38.999997952
+3364  40.078712  116.325114       284 2009-02-19 11:45:44.000000512
+
+[3365 rows x 4 columns]
+2023-10-04 12:19:38,747 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:38,772 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:38,790 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:38,810 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:38,833     main  INFO Skipping activity: ../dataset/Data/044/Trajectory/20090412231834.plt due to Exception:
+       Latitude   Longitude  Altitude                      datetime
+0     40.078934  116.326716       492 2009-04-12 23:18:33.999995136
+1     40.078857  116.326657       491 2009-04-12 23:18:38.999998208
+2     40.078840  116.326580       491 2009-04-12 23:18:44.000000768
+3     40.078813  116.326521       491 2009-04-12 23:18:49.000003328
+4     40.079351  116.326664        92 2009-04-12 23:18:53.999996928
+...         ...         ...       ...                           ...
+6469  40.078746  116.326152       481 2009-04-13 15:03:44.000000768
+6470  40.078776  116.326171       480 2009-04-13 15:03:49.000003328
+6471  40.078775  116.326150       483 2009-04-13 15:03:53.999996928
+6472  40.078710  116.326200       484 2009-04-13 15:03:59.000000000
+6473  40.078645  116.326287       481 2009-04-13 15:04:04.000002560
+
+[6474 rows x 4 columns]
+2023-10-04 12:19:38,853 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:38,920 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:38,948 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:39,023 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:39,047 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:39,110 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:39,136 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:39,248 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:39,275     main  INFO Skipping activity: ../dataset/Data/044/Trajectory/20090301231823.plt due to Exception:
+       Latitude   Longitude  Altitude                      datetime
+0     40.079739  116.326520       492 2009-03-01 23:18:22.999996416
+1     40.080121  116.326482       492 2009-03-01 23:18:27.999999488
+2     40.080565  116.326383       492 2009-03-01 23:18:33.000002048
+3     40.080595  116.326308       491 2009-03-01 23:18:37.999995648
+4     40.080326  116.326297       490 2009-03-01 23:18:42.999998720
+...         ...         ...       ...                           ...
+3138  40.080098  116.325926       259 2009-03-02 13:04:58.999998464
+3139  40.080214  116.325940       268 2009-03-02 13:05:04.000001280
+3140  40.080335  116.325973       272 2009-03-02 13:05:09.000004096
+3141  40.080464  116.325953       269 2009-03-02 13:05:13.999997696
+3142  40.080637  116.325950       257 2009-03-02 13:05:19.000000256
+
+[3143 rows x 4 columns]
+2023-10-04 12:19:39,302     main  INFO Skipping activity: ../dataset/Data/044/Trajectory/20090215023234.plt due to Exception:
+       Latitude   Longitude  Altitude                      datetime
+0     39.968003  116.393850       458 2009-02-15 02:32:34.000002560
+1     39.968006  116.393866       472 2009-02-15 02:32:38.999996160
+2     39.968006  116.393866       472 2009-02-15 02:32:42.000003072
+3     39.968003  116.393872       471 2009-02-15 02:32:43.999998464
+4     39.967997  116.393862       470 2009-02-15 02:32:49.000001792
+...         ...         ...       ...                           ...
+3126  39.979190  116.326108       253 2009-02-15 14:24:18.999999232
+3127  39.979213  116.326025       259 2009-02-15 14:24:24.000001792
+3128  39.979279  116.325884       262 2009-02-15 14:24:28.999995904
+3129  39.979337  116.325772       265 2009-02-15 14:24:33.999998208
+3130  39.979406  116.325628       268 2009-02-15 14:24:39.000000768
+
+[3131 rows x 4 columns]
+2023-10-04 12:19:39,324 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:39,363 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:39,395 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:39,438 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:39,455 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:39,482 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:39,522 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:39,635 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:39,662     main  INFO Skipping activity: ../dataset/Data/044/Trajectory/20090304232435.plt due to Exception:
+       Latitude   Longitude  Altitude                      datetime
+0     40.070654  116.323584       492 2009-03-04 23:24:35.000000512
+1     40.070325  116.323808       491 2009-03-04 23:24:40.000002816
+2     40.070118  116.324246       492 2009-03-04 23:24:44.999997184
+3     40.069950  116.324853       492 2009-03-04 23:24:49.999999488
+4     40.069772  116.325573       492 2009-03-04 23:24:55.000002304
+...         ...         ...       ...                           ...
+3440  40.079721  116.325819       270 2009-03-05 11:46:58.000002048
+3441  40.078332  116.326041       314 2009-03-05 11:47:57.999998208
+3442  40.078438  116.326129       275 2009-03-05 11:48:03.000001024
+3443  40.078456  116.326129       267 2009-03-05 11:48:08.000003328
+3444  40.078384  116.326233       266 2009-03-05 11:48:12.999997440
+
+[3445 rows x 4 columns]
+2023-10-04 12:19:39,679 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:39,701 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:39,729 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:39,763 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:39,806 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:39,844 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:39,875 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:39,895 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:39,912 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:39,931 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:39,948 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:39,976 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:39,996 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:40,057 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:40,117 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:40,185 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:40,210 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:40,255 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:40,283 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:40,359 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:40,392 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:40,411 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:40,442 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:40,544 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:40,570 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:40,588 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:40,613     main  INFO Skipping activity: ../dataset/Data/044/Trajectory/20090707062336.plt due to Exception:
+       Latitude   Longitude  Altitude                      datetime
+0     39.975220  116.318997       208 2009-07-07 06:23:36.000001024
+1     39.975256  116.318903       204 2009-07-07 06:23:41.000003328
+2     39.975293  116.318870       213 2009-07-07 06:23:45.999997440
+3     39.975283  116.318872       221 2009-07-07 06:23:51.000000000
+4     39.975317  116.318860       235 2009-07-07 06:23:56.000002560
+...         ...         ...       ...                           ...
+2885  39.973548  116.197881       257 2009-07-07 11:45:03.999997440
+2886  39.973555  116.197887       257 2009-07-07 11:45:06.000001792
+2887  39.973542  116.197882       257 2009-07-07 11:45:10.999995904
+2888  39.973513  116.197900       257 2009-07-07 11:45:15.999998208
+2889  39.973453  116.197942       257 2009-07-07 11:45:21.000000768
+
+[2890 rows x 4 columns]
+2023-10-04 12:19:40,657 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:40,717 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:40,734 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:40,795 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:40,824 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:40,902 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:40,925 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:41,022 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:41,066 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:41,123 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:41,158 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:41,184 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:41,216 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:41,266 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:41,286 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:41,327 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:41,346 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:41,384 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:41,408     main  INFO Skipping activity: ../dataset/Data/044/Trajectory/20090222092556.plt due to Exception:
+       Latitude   Longitude  Altitude                      datetime
+0     40.077410  116.327360       114 2009-02-22 09:25:56.000003584
+1     40.077410  116.327360       114 2009-02-22 09:25:59.000001792
+2     40.077406  116.327357       113 2009-02-22 09:26:00.999997184
+3     40.077865  116.327372       145 2009-02-22 09:26:06.000000256
+4     40.078101  116.327317       152 2009-02-22 09:26:11.000002560
+...         ...         ...       ...                           ...
+2555  40.079398  116.325720       219 2009-02-22 14:42:48.000003840
+2556  40.079385  116.325759       225 2009-02-22 14:42:52.999997440
+2557  40.079430  116.325757       231 2009-02-22 14:42:58.000000768
+2558  40.078384  116.325851       210 2009-02-22 14:43:23.000004608
+2559  40.078547  116.325800       219 2009-02-22 14:43:27.999997952
+
+[2560 rows x 4 columns]
+2023-10-04 12:19:41,449 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:41,494 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:41,527 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:41,555 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:41,581     main  INFO Skipping activity: ../dataset/Data/044/Trajectory/20090714024205.plt due to Exception:
+       Latitude   Longitude  Altitude                      datetime
+0     39.991064  116.327407       956 2009-07-14 02:42:05.000002560
+1     39.990418  116.328153      1092 2009-07-14 02:42:25.000004352
+2     39.990433  116.328100      1077 2009-07-14 02:42:29.999997696
+3     39.990404  116.328164      1096 2009-07-14 02:42:35.000001024
+4     39.990637  116.327974      1008 2009-07-14 02:42:40.000003328
+...         ...         ...       ...                           ...
+3488  39.972240  116.255381       164 2009-07-14 10:33:02.000001792
+3489  39.972247  116.255379       164 2009-07-14 10:33:03.999997696
+3490  39.972255  116.255366       163 2009-07-14 10:33:09.000000256
+3491  39.972224  116.255182       162 2009-07-14 10:33:14.000002560
+3492  39.972255  116.254925       167 2009-07-14 10:33:18.999996160
+
+[3493 rows x 4 columns]
+2023-10-04 12:19:41,603 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:41,639 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:41,664 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:41,682 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:41,715 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:41,768 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:41,784 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:41,807 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.
+2023-10-04 12:19:41,833 sql_queries DEBUG Data inserted into table 'Activity (start_date_time, end_date_time, user_id)' successfully.
+2023-10-04 12:19:41,906 sql_queries DEBUG Data inserted into table 'TrackPoint (activity_id, lat, lon, altitude, date_time)' successfully.

@@ -1,5 +1,6 @@
 # MAIN FILE FOR INSERTING THE DATA:
 
+import pandas as pd
 from DbConnector import DbConnector
 import DataFetching as DaF
 import SqlQueries as SQ
@@ -44,7 +45,7 @@ def main():
             break
         activities = DaF.get_activities(user)
         
-        for activity in activities: 
+        for activity in activities:
             check, plotpoints = activity.get_track_points()
             if check: 
                 activity_tuple = (activity.start, activity.end, activity.user)
@@ -66,5 +67,24 @@ def main():
                 logger.info(f'Skipping activity: {activity.trackpoints} due to amount of points: {len(plotpoints)}')
     dbc.close_connection()
 
-if __name__ == '__main__':
-    main()
+def update_labels():
+    dbc = DbConnector()
+
+    labeled_ids = DaF.get_labeled_ids()
+    for user in labeled_ids:
+        labels = DaF.get_labels(user)
+        activities = SQ.get_activities(dbc, user)
+        df = pd.DataFrame(activities, columns=["activity_id",  "user_id", "transportation_mode", "start_date_time", "end_date_time"])
+        # Merge dataframes on start_date_time and end_date_time.
+        merged_df = df.merge(labels, how = 'inner', on=["start_date_time", "end_date_time"])
+        for index, row in merged_df.iterrows():
+            SQ.update_transportation_mode(dbc, row["activity_id"], row["transportation_mode_y"])
+            logger.info(f'Updated activity {row["activity_id"]} with transportation mode {row["transportation_mode_y"]}')
+    dbc.close_connection()
+        
+
+
+update_labels()
+
+# if __name__ == '__main__':
+#     main()

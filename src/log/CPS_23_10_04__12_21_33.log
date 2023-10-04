@@ -1,0 +1,4 @@
+2023-10-04 12:21:33,497 sql_queries DEBUG Table 'User' created successfully.
+2023-10-04 12:21:33,540 sql_queries DEBUG Table 'Activity' created successfully.
+2023-10-04 12:21:33,593 sql_queries DEBUG Table 'TrackPoint' created successfully.
+2023-10-04 12:21:33,611 sql_queries DEBUG Data inserted into table 'User (user_id, has_labels)' successfully.

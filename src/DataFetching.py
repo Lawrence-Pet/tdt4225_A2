@@ -89,14 +89,17 @@ def get_labels(user_name) -> pd.DataFrame:
     # date, clock_time, date, clock_time, transport_mode
     try:
         labels = np.genfromtxt(path, skip_header=1, dtype=str)
-        
-        
+        if labels.shape == (5,):
+            # Reshape the array into a single row with multiple columns
+            labels = labels.reshape(1, -1)
+
         df = pd.DataFrame(labels, columns=['start_time', 
                                         'start_clock', 
                                         'end_time', 
                                         'end_clock', 
                                         'transportation_mode']
                                         )
+        #print(df)
         df = time_and_date_to_datetime(df)
         return df
     except Exception as e:
@@ -121,6 +124,15 @@ def time_and_date_to_datetime(df: pd.DataFrame) -> pd.DataFrame:
 def ole_to_datetime(ole: float) -> float:
     unix = (ole - 25569) * 24 * 3600 * 1000
     return unix
+
+def get_labeled_ids():
+    """
+    Returns a list of labeled ids
+    """
+    path = data_path + "/.." + "/labeled_ids.txt"
+    labeled_ids = np.genfromtxt(path, dtype=str)
+    return labeled_ids
+
 
 ## primarily used for testing
 if __name__ == '__main__':
