@@ -29,9 +29,17 @@ class Activity:
         """
         try: 
             df = plt_to_df(self.trackpoints)
-            self.start = df['Date_DS'].iloc[0]
-            self.end = df['Date_DS'].iloc[-1]
             
+            #print(df['Date_DS'][1])
+            time = df['Date_DS'].apply(ole_to_datetime)  
+            #print(time)          
+            datetime = pd.to_datetime(time, unit='ms')
+            df['datetime'] = datetime
+            df = df.drop(columns=['Date_DS'])
+
+            self.start = df['datetime'].iloc[0]
+            self.end = df['datetime'].iloc[-1]
+            #print(datetime)
             if len(df) > 2500: 
                 return False, df
             else: 
@@ -112,20 +120,25 @@ def time_and_date_to_datetime(df: pd.DataFrame) -> pd.DataFrame:
     df['end_date_time'] = end
     return(df.drop(columns=['start_time', 'start_clock', 'end_time', 'end_clock']))
 
+def ole_to_datetime(ole: float) -> float:
+    unix = (ole - 25569) * 24 * 3600 * 1000
+    return unix
+
 ## primarily used for testing
 if __name__ == '__main__':
     #print(get_labels("010"))
     #print(get_plt_files("010"))
-    activities = get_activities('000')
+    activities = get_activities('010')
     points = activities[0].get_track_points()
     a = activities[0]
-
-    #print(f'User: {a.user}    start: {a.start}    end: {a.end}    path: {a.trackpoints}')
-    print(get_labels('010'))
-
+    
 
     print(f'User: {a.user}    start: {a.start}    end: {a.end}    path: {a.trackpoints}')
-    print(f'One row: \n{points[1].iloc[0]}')
+    #print(get_labels('010'))
+
+
+    #print(f'User: {a.user}    start: {a.start}    end: {a.end}    path: {a.trackpoints}')
+    #print(f'One row: \n{points[1].iloc[0]}')
 
 
     
