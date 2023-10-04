@@ -44,13 +44,19 @@ def insert_bulk_data(db_connector, table_name, datatuples, format_string: str):
         db_connector.cursor.executemany(insert_query, datatuples)
         db_connector.db_connection.commit()
         logger.debug(f"Data inserted into table '{table_name}' successfully.")
+        check = True
+        e = None
+
     except Exception as e:
         logger.error(f"Error inserting data into table '{table_name}': {e}")
         db_connector.db_connection.rollback()
+        check = False
+
 
 def get_last_rowid(db_connector):
     rowid = db_connector.cursor.lastrowid
     return rowid
+
 
 def get_activities(db_connector, user_id):
     try:
