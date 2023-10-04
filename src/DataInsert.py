@@ -31,12 +31,15 @@ def main():
             check, plotpoints = activity.get_track_points()
             if check: 
                 activity_tuple = (activity.start, activity.end, activity.user)
-                SQ.insert_data(dbc, "Activity ("+ACTIVITY_LABELS+")", activity_tuple)
-                ## INSERT ACTIVITY TO DB
-                ## BULK INSERT TRACKPOINTS TO DB
-                df = plotpoints
-                data_tuples = list(df.itertuples(index=False, name=None))
-                SQ.insert_bulk_data(dbc, "TrackPoint ("+TRACKPOINT_LABELS+")", data_tuples, "%s, %s, %s, %s, %s")
+                check, e = SQ.insert_data(dbc, "Activity ("+ACTIVITY_LABELS+")", activity_tuple)
+                if check: 
+                    ## INSERT ACTIVITY TO DB
+                    ## BULK INSERT TRACKPOINTS TO DB
+                    df = plotpoints
+                    data_tuples = list(df.itertuples(index=False, name=None))
+                    SQ.insert_bulk_data(dbc, "TrackPoint ("+TRACKPOINT_LABELS+")", data_tuples, "%s, %s, %s, %s, %s")
+                else: 
+                    logger.error(f'Couldnt add activity du to Exception:\n{e}')
             else:
                 logger.info(f'Skipping activity: {activity}')
     dbc.close_connection()
