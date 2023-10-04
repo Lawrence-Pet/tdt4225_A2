@@ -29,17 +29,13 @@ class Activity:
         """
         try: 
             df = plt_to_df(self.trackpoints)
-            
-            #print(df['Date_DS'][1])
             time = df['Date_DS'].apply(ole_to_datetime)  
-            #print(time)          
             datetime = pd.to_datetime(time, unit='ms')
             df['datetime'] = datetime
             df = df.drop(columns=['Date_DS'])
 
             self.start = df['datetime'].iloc[0]
             self.end = df['datetime'].iloc[-1]
-            #print(datetime)
             if len(df) > 2500: 
                 return False, df
             else: 
@@ -110,10 +106,9 @@ def get_labels(user_name) -> pd.DataFrame:
 def get_activities(user: str) -> List[Activity]:
     files = get_plt_files(user)
     activities: list[Activity] = []
-    for file in files: 
+    for file in files:
         path = data_path + "/" + user + "/Trajectory/" + file
         activities.append(Activity(user, path))
-
     return activities
 
 def time_and_date_to_datetime(df: pd.DataFrame) -> pd.DataFrame:
@@ -129,20 +124,10 @@ def ole_to_datetime(ole: float) -> float:
 
 ## primarily used for testing
 if __name__ == '__main__':
-    #print(get_labels("010"))
-    #print(get_plt_files("010"))
     activities = get_activities('010')
     points = activities[0].get_track_points()
     a = activities[0]
     
-
     print(f'User: {a.user}    start: {a.start}    end: {a.end}    path: {a.trackpoints}')
-    #print(get_labels('010'))
-
-
-    #print(f'User: {a.user}    start: {a.start}    end: {a.end}    path: {a.trackpoints}')
-    #print(f'One row: \n{points[1].iloc[0]}')
-
-
     
     
