@@ -37,8 +37,6 @@ def main():
     SQ.create_tables(dbc)
     
     for user in users:
-
-        print("Inserting data for user: ", user)
         check, e = SQ.insert_data(dbc, "User (user_id, has_labels)", (user, None), "%s, %s")    
         if not check:
             logger.error(f'Error in adding user:\n {e}')
@@ -55,6 +53,9 @@ def main():
                     ## INSERT ACTIVITY TO DB
                     ## BULK INSERT TRACKPOINTS TO DB
                     df = plotpoints
+                    activity_id = SQ.get_last_rowid(dbc)
+                    df.insert(0, 'activity_id', activity_id)
+                    df['activity_id'] = activity_id
                     data_tuples = list(df.itertuples(index=False, name=None))
                     check, e = SQ.insert_bulk_data(dbc, "TrackPoint ("+TRACKPOINT_LABELS+")", data_tuples, "%s, %s, %s, %s, %s")
                     if not check: 
@@ -62,7 +63,7 @@ def main():
                 else: 
                     logger.error(f'Couldnt add activity du to Exception:\n{e}')
             else:
-                logger.info(f'Skipping activity: {activity}')
+                logger.info(f'Skipping activity: {activity.trackpoints} due to amount of points: {len(plotpoints)}')
     dbc.close_connection()
 
 if __name__ == '__main__':
