@@ -51,3 +51,25 @@ def insert_bulk_data(db_connector, table_name, datatuples, format_string: str):
 def get_last_rowid(db_connector):
     rowid = db_connector.cursor.lastrowid
     return rowid
+
+def get_activities(db_connector, user_id):
+    try:
+        query = f"SELECT * FROM Activity WHERE user_id = '{user_id}'"
+        db_connector.cursor.execute(query)
+        return db_connector.cursor.fetchall()
+    except Exception as e:
+        logger.error(f"Error getting activities for user '{user_id}': {e}")
+        db_connector.db_connection.rollback()
+        return False, e
+    
+def update_transportation_mode(db_connector, activity_id, transportation_mode):
+    try:
+        query = f"UPDATE Activity SET transportation_mode = '{transportation_mode}' WHERE activity_id = {activity_id}"
+        db_connector.cursor.execute(query)
+        db_connector.db_connection.commit()
+        logger.debug(f"Transportation mode updated successfully.")
+        return True, None
+    except Exception as e:
+        logger.error(f"Error updating transportation mode: {e}")
+        db_connector.db_connection.rollback()
+        return False, e
