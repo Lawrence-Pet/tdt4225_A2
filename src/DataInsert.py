@@ -19,19 +19,19 @@ def main():
     
     for user in users:
 
-        check, e = SQ.insert_data(dbc, "User (user_id, has_labels)", (user, None))    
+        print("Inserting data for user: ", user)
+        check, e = SQ.insert_data(dbc, "User (user_id, has_labels)", (user, None), "%s, %s")    
         if not check:
             logger.error('Error in adding user:\n {e}')
             print(f'Stopping insert due to Exception:\n{e}')
             break
-
         activities = DaF.get_activities(user)
         
         for activity in activities: 
             check, plotpoints = activity.get_track_points()
             if check: 
                 activity_tuple = (activity.start, activity.end, activity.user)
-                check, e = SQ.insert_data(dbc, "Activity ("+ACTIVITY_LABELS+")", activity_tuple)
+                check, e = SQ.insert_data(dbc, "Activity ("+ACTIVITY_LABELS+")", activity_tuple, "%s, %s, %s")
                 if check: 
                     ## INSERT ACTIVITY TO DB
                     ## BULK INSERT TRACKPOINTS TO DB

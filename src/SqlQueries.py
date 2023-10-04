@@ -16,13 +16,14 @@ def create_tables(db_connector):
         print(f"Error creating table '{table_name}': {e}")
 
 
-def insert_data(db_connector, table_name, data):
+def insert_data(db_connector, table_name, data, format_string):
     """
-    Inserts one row to the database.
+    Inserts one row to the database using a custom formatting string.
     """
     try:
-        insert_query = f"INSERT INTO {table_name} VALUES {data}"
-        db_connector.cursor.execute(insert_query)
+        insert_query = f"INSERT INTO {table_name} VALUES ({format_string})"
+        print(insert_query)
+        db_connector.cursor.execute(insert_query, data)
         db_connector.db_connection.commit()
         print(f"Data inserted into table '{table_name}' successfully.")
         e = None
