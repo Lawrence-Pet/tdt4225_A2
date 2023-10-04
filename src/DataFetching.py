@@ -29,14 +29,16 @@ class Activity:
         """
         try: 
             df = plt_to_df(self.trackpoints)
-            self.start = df['Date_DS'].iloc[0]
-            self.end = df['Date_DS'].iloc[-1]
+            
             #print(df['Date_DS'][1])
             time = df['Date_DS'].apply(ole_to_datetime)  
             #print(time)          
             datetime = pd.to_datetime(time, unit='ms')
             df['datetime'] = datetime
             df = df.drop(columns=['Date_DS'])
+            
+            self.start = df['datetime'].iloc[0]
+            self.end = df['datetime'].iloc[-1]
             #print(datetime)
             if len(df) > 2500: 
                 return False, df
