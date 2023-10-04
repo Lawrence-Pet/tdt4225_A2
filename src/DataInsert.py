@@ -21,7 +21,7 @@ def main():
 
         check, e = SQ.insert_data(dbc, "User (user_id, has_labels)", (user, None))    
         if not check:
-            logger.error('Error in adding user:\n {e}')
+            logger.error(f'Error in adding user:\n {e}')
             print(f'Stopping insert due to Exception:\n{e}')
             break
 
@@ -37,7 +37,9 @@ def main():
                     ## BULK INSERT TRACKPOINTS TO DB
                     df = plotpoints
                     data_tuples = list(df.itertuples(index=False, name=None))
-                    SQ.insert_bulk_data(dbc, "TrackPoint ("+TRACKPOINT_LABELS+")", data_tuples, "%s, %s, %s, %s, %s")
+                    check, e = SQ.insert_bulk_data(dbc, "TrackPoint ("+TRACKPOINT_LABELS+")", data_tuples, "%s, %s, %s, %s, %s")
+                    if not check: 
+                        logger.error(f'Couldnt add trackpoints du to Exception\n {e}')
                 else: 
                     logger.error(f'Couldnt add activity du to Exception:\n{e}')
             else:
