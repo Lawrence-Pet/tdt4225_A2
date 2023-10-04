@@ -15,18 +15,20 @@ def main():
     SQ.create_tables(dbc)
     
     for user in users:
-        SQ.insert_data(dbc, "User (user_id, has_labels)", (user, None))    
+        print("Inserting data for user: ", user)
+        SQ.insert_data(dbc, 'User (user_id, has_labels)', (user, None), "%s, %s")    
         activities = DaF.get_activities(user)
         
         for activity in activities: 
             check, plotpoints = activity.get_track_points()
             if check: 
                 activity_tuple = (activity.start, activity.end, activity.user)
-                SQ.insert_data(dbc, "Activity ("+ACTIVITY_LABELS+")", activity_tuple)
+                SQ.insert_data(dbc, "Activity ("+ACTIVITY_LABELS+")", activity_tuple, "%s, %s, %s")
                 ## INSERT ACTIVITY TO DB
                 ## BULK INSERT TRACKPOINTS TO DB
                 df = plotpoints
                 data_tuples = list(df.itertuples(index=False, name=None))
+                print(data_tuples[0])
                 SQ.insert_bulk_data(dbc, "TrackPoint ("+TRACKPOINT_LABELS+")", data_tuples, "%s, %s, %s, %s, %s")
 
 
