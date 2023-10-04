@@ -82,6 +82,9 @@ def get_plt_files(user_name: str) -> list:
     return files_filtered
 
 def get_users():
+    """
+    Returns a list of users
+    """
     return get_files_in_folder(data_path)
 
 def get_labels(user_name) -> pd.DataFrame:
