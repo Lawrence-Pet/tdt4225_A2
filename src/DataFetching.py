@@ -36,7 +36,7 @@ class Activity:
             datetime = pd.to_datetime(time, unit='ms')
             df['datetime'] = datetime
             df = df.drop(columns=['Date_DS'])
-            
+
             self.start = df['datetime'].iloc[0]
             self.end = df['datetime'].iloc[-1]
             #print(datetime)
@@ -128,11 +128,12 @@ def ole_to_datetime(ole: float) -> float:
 if __name__ == '__main__':
     #print(get_labels("010"))
     #print(get_plt_files("010"))
-    activities = get_activities('000')
+    activities = get_activities('010')
     points = activities[0].get_track_points()
     a = activities[0]
+    
 
-    #print(f'User: {a.user}    start: {a.start}    end: {a.end}    path: {a.trackpoints}')
+    print(f'User: {a.user}    start: {a.start}    end: {a.end}    path: {a.trackpoints}')
     #print(get_labels('010'))
 
 
