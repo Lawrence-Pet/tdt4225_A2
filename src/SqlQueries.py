@@ -25,9 +25,14 @@ def insert_data(db_connector, table_name, data):
         db_connector.cursor.execute(insert_query)
         db_connector.db_connection.commit()
         print(f"Data inserted into table '{table_name}' successfully.")
+        e = None
+        check = True
     except Exception as e:
         print(f"Error inserting data into table '{table_name}': {e}")
         db_connector.db_connection.rollback()
+        check = False
+    finally:
+        return check, e
 
 # 
 def insert_bulk_data(db_connector, table_name, datatuples, format_string: str):
