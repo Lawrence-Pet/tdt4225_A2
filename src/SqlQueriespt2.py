@@ -80,17 +80,18 @@ def query_to_db(db_connector: DbConnector, query = None):
         try:
             #db_connector.cursor.execute(query)
             logger.debug(f"Executing: {query}")
+            results=[]
             for result in db_connector.cursor.execute(query, multi=True):
                 if result.with_rows:
-                    print("Rows produced by statement '{}':".format(result.statement))
+                    results.append(result.fetchall())
                     print(result.fetchall())
                 else:
                     print("Number of rows affected by statement '{}': {}".format(
                     result.statement, result.rowcount))
-            return True
+            return True, results
         except Exception as e:
             logger.error(f"Error executing query '{query}':\n {e}")
-            return False
+            return False, None
         
     logger.error("No query was passed.")
-    return False
+    return False, None

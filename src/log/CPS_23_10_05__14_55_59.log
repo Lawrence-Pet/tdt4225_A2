@@ -1,0 +1,15 @@
+2023-10-05 14:56:09,825 SQL PART2 DEBUG Executing: 
+SELECT DISTINCT transportation_mode FROM Activity;
+
+2023-10-05 14:56:40,059 SQL PART2 DEBUG Executing: 
+SELECT DISTINCT transportation_mode FROM Activity;
+
+2023-10-05 14:57:28,837 SQL PART2 DEBUG Executing: 
+SELECT DISTINCT transportation_mode FROM Activity;
+
+2023-10-05 14:57:55,803 SQL PART2 DEBUG Executing: 
+SELECT DISTINCT transportation_mode FROM Activity;
+
+2023-10-05 14:58:24,684 SQL PART2 DEBUG Executing: 
+SELECT DISTINCT transportation_mode FROM Activity;
+

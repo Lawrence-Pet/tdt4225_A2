@@ -1,0 +1,3 @@
+2023-10-05 14:54:37,806 SQL PART2 DEBUG Executing: 
+SELECT DISTINCT transportation_mode FROM Activity;
+
