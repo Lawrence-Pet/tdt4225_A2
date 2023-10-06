@@ -87,6 +87,7 @@ WITH close_time (user_id1, user_id2, activity_id1, activity_id2) AS (
             OR A1.start_date_time BETWEEN A2.start_date_time AND A2.end_date_time
             OR A1.end_date_time BETWEEN A2.start_date_time AND A2.end_date_time)
         AND A1.user_id < A2.user_id
+        AND A1.user_id < 050
 ),
 trackpoints (tr_activity_id, lat, lon, tr_date_time) AS (
     SELECT activity_id, lat, lon, date_time

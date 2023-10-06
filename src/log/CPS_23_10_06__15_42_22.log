@@ -1,0 +1,55 @@
+2023-10-06 15:42:24,550 SQL PART2 DEBUG Executing: SELECT COUNT(*) FROM User
+2023-10-06 15:42:24,603 SQL PART2 DEBUG Executing: SELECT COUNT(*) FROM Activity
+2023-10-06 15:42:24,660 SQL PART2 DEBUG Executing: SELECT COUNT(*) FROM TrackPoint
+2023-10-06 15:42:32,949 SQL PART2 DEBUG Executing: 
+        WITH 
+            query AS (
+                        SELECT COUNT(trackpoint_id) AS trackpoint_count, activity_id FROM TrackPoint
+                        GROUP BY activity_id
+                    ),
+            activities AS (
+                SELECT user_id, activity_id FROM Activity
+                ),
+            joined_user AS (SELECT activities.user_id, query.trackpoint_count FROM query JOIN activities ON query.activity_id = activities.activity_id)
+
+            SELECT user_id, AVG(trackpoint_count) FROM joined_user
+            GROUP BY user_id
+        ;
+        
+2023-10-06 15:42:37,052 SQL PART2 DEBUG Executing: 
+        WITH 
+            query AS (
+                        SELECT COUNT(trackpoint_id) AS trackpoint_count, activity_id FROM TrackPoint
+                        GROUP BY activity_id
+                    ),
+            activities AS (
+                SELECT user_id, activity_id FROM Activity
+                ),
+            joined_user AS (SELECT activities.user_id, query.trackpoint_count FROM query JOIN activities ON query.activity_id = activities.activity_id)
+
+            SELECT user_id, MIN(trackpoint_count) FROM joined_user
+            GROUP BY user_id
+        ;
+        
+2023-10-06 15:42:40,737 SQL PART2 DEBUG Executing: 
+        WITH 
+            query AS (
+                        SELECT COUNT(trackpoint_id) AS trackpoint_count, activity_id FROM TrackPoint
+                        GROUP BY activity_id
+                    ),
+            activities AS (
+                SELECT user_id, activity_id FROM Activity
+                ),
+            joined_user AS (SELECT activities.user_id, query.trackpoint_count FROM query JOIN activities ON query.activity_id = activities.activity_id)
+
+            SELECT user_id, MAX(trackpoint_count) FROM joined_user
+            GROUP BY user_id
+        ;
+        
+2023-10-06 15:42:55,468 SQL PART2 DEBUG Executing: 
+SELECT user_id, COUNT(activity_id) AS result FROM Activity
+GROUP BY user_id
+ORDER BY result DESC
+LIMIT 15
+;
+
