@@ -1,0 +1,6 @@
+2023-10-06 17:53:27,450 SQL PART2 DEBUG Executing: 
+SELECT activity_id
+FROM Activity
+GROUP BY activity_id
+HAVING COUNT(activity_id) > 1
+
