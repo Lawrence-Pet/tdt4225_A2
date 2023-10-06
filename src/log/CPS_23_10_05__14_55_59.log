@@ -163,3 +163,6 @@ SELECT DISTINCT transportation_mode FROM Activity;
                 SELECT * FROM joined;
 ':
  1054 (42S22): Unknown column 'bus' in 'where clause'
+2023-10-06 15:04:47,855 SQL PART2 DEBUG Executing: SELECT COUNT(*) FROM User
+2023-10-06 15:04:47,934 SQL PART2 DEBUG Executing: SELECT COUNT(*) FROM Activity
+2023-10-06 15:04:47,996 SQL PART2 DEBUG Executing: SELECT COUNT(*) FROM TrackPoint

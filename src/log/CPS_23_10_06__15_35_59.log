@@ -1,0 +1,42 @@
+2023-10-06 15:36:01,185 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_user FROM User
+2023-10-06 15:36:01,238 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_activity FROM Activity
+2023-10-06 15:36:01,290 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_trackpoints FROM TrackPoint
+2023-10-06 15:36:15,298 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_user FROM User
+2023-10-06 15:36:15,359 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_activity FROM Activity
+2023-10-06 15:36:15,416 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_trackpoints FROM TrackPoint
+2023-10-06 15:36:47,975 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_user FROM User
+2023-10-06 15:36:48,069 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_activity FROM Activity
+2023-10-06 15:36:48,124 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_trackpoints FROM TrackPoint
+2023-10-06 15:36:57,571 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_user FROM User
+2023-10-06 15:36:57,622 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_activity FROM Activity
+2023-10-06 15:36:57,691 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_trackpoints FROM TrackPoint
+2023-10-06 15:38:16,327 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_user FROM User
+2023-10-06 15:38:16,389 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_activity FROM Activity
+2023-10-06 15:38:16,444 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_trackpoints FROM TrackPoint
+2023-10-06 15:38:39,786 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_user FROM User
+2023-10-06 15:38:39,841 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_activity FROM Activity
+2023-10-06 15:38:39,895 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_trackpoints FROM TrackPoint
+2023-10-06 15:40:46,303 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_user FROM User
+2023-10-06 15:40:46,381 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_activity FROM Activity
+2023-10-06 15:40:46,435 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_trackpoints FROM TrackPoint
+2023-10-06 15:41:14,642 SQL PART2 DEBUG Executing: SELECT * as n_user FROM User
+2023-10-06 15:41:14,667 SQL PART2 ERROR Error executing query 'SELECT * as n_user FROM User':
+ 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as n_user FROM User' at line 1
+2023-10-06 15:41:14,668 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_activity FROM Activity
+2023-10-06 15:41:14,726 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_trackpoints FROM TrackPoint
+2023-10-06 15:41:21,374 SQL PART2 DEBUG Executing: SELECT * as n_user FROM User
+2023-10-06 15:41:21,403 SQL PART2 ERROR Error executing query 'SELECT * as n_user FROM User':
+ 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as n_user FROM User' at line 1
+2023-10-06 15:41:21,404 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_activity FROM Activity
+2023-10-06 15:41:21,455 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_trackpoints FROM TrackPoint
+2023-10-06 15:41:47,369 SQL PART2 DEBUG Executing: SELECT * as n_user FROM User
+2023-10-06 15:41:47,397 SQL PART2 ERROR Error executing query 'SELECT * as n_user FROM User':
+ 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as n_user FROM User' at line 1
+2023-10-06 15:41:47,399 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_activity FROM Activity
+2023-10-06 15:41:47,460 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_trackpoints FROM TrackPoint
+2023-10-06 15:42:00,447 SQL PART2 DEBUG Executing: SELECT * FROM User
+2023-10-06 15:42:00,481 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_activity FROM Activity
+2023-10-06 15:42:00,548 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_trackpoints FROM TrackPoint
+2023-10-06 15:42:24,360 SQL PART2 DEBUG Executing: SELECT * FROM User
+2023-10-06 15:42:24,384 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_activity FROM Activity
+2023-10-06 15:42:24,434 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_trackpoints FROM TrackPoint

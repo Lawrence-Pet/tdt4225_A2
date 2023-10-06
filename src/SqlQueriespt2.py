@@ -75,7 +75,7 @@ ORDER BY total_altitude_gain DESC
 LIMIT 15
 """
 
-def query_to_db(db_connector: DbConnector, query = None):
+def query_to_db(db_connector: DbConnector, query = None) -> (bool, any):
     
     if query != None:
         try:
@@ -84,8 +84,9 @@ def query_to_db(db_connector: DbConnector, query = None):
             results=[]
             for result in db_connector.cursor.execute(query, multi=True):
                 if result.with_rows:
-                    results.append(result.fetchall())
-                    print(result.fetchall())
+                    columns = result.description 
+                    resulted = [{columns[index][0]:column for index, column in enumerate(value)} for value in result.fetchall()]
+                    results.append(resulted)
                 else:
                     print("Number of rows affected by statement '{}': {}".format(
                     result.statement, result.rowcount))
@@ -96,9 +97,3 @@ def query_to_db(db_connector: DbConnector, query = None):
         
     logger.error("No query was passed.")
     return False, None
-
-def calculate_lon_lat_distance(lon1, lon2, lat1, lat2):
-    dist_x = abs(lon1-lon2)
-    dist_y = abs(lat1-lat2)
-    total = math.sqrt(dist_x**2 + dist_y**2)
-    return total
