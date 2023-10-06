@@ -63,19 +63,6 @@ The list of transportation mode, user id and duration for those activities are i
 For this task we tried numerous queries, we've ended up with some queries that we believe have potential but none of them has completed their queries as of now. However we have some suggestions to how such a query can look like: 
 
 ```sql
-SELECT 
-    user_id1,
-    user_id2,
-    T1.tr_activity_id AS activity_id1,
-    T2.tr_activity_id AS activity_id2,
-    T1.tr_date_time AS date_time1,
-    T2.tr_date_time AS date_time2,
-    T1.lat AS lat1,
-    T1.lon AS lon1,
-    T2.lat AS lat2,
-    T2.lon AS lon2
-
-
 WITH close_time (user_id1, user_id2, activity_id1, activity_id2) AS (
     SELECT DISTINCT A1.user_id AS user1, A2.user_id AS user2, A1.activity_id AS activity_id1, A2.activity_id AS activity_id2
     FROM Activity AS A1
