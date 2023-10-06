@@ -1,6 +1,6 @@
 from DbConnector import DbConnector
 from pet_log import get_logger
-import math
+from tabulate import tabulate
 logger = get_logger('SQL PART2')
 # Question 1: How many users, activities, and trackpoints are there in the dataset
 count_users_query = "SELECT COUNT(*) FROM User"
@@ -75,7 +75,7 @@ ORDER BY total_altitude_gain DESC
 LIMIT 15
 """
 
-def query_to_db(db_connector: DbConnector, query = None) -> (bool, any):
+def query_to_db(db_connector: DbConnector, query = None) -> bool:
     
     if query != None:
         try:
@@ -85,15 +85,15 @@ def query_to_db(db_connector: DbConnector, query = None) -> (bool, any):
             for result in db_connector.cursor.execute(query, multi=True):
                 if result.with_rows:
                     columns = result.description 
-                    resulted = [{columns[index][0]:column for index, column in enumerate(value)} for value in result.fetchall()]
-                    results.append(resulted)
+                    resulted = result.fetchall()
+                    print(tabulate(resulted, headers=result.column_names))
                 else:
                     print("Number of rows affected by statement '{}': {}".format(
                     result.statement, result.rowcount))
-            return True, results
+            return True
         except Exception as e:
             logger.error(f"Error executing query '{query}':\n {e}")
-            return False, None
+            return False
         
     logger.error("No query was passed.")
-    return False, None
+    return False

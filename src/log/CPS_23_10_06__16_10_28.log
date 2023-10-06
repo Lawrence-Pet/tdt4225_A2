@@ -1,0 +1,18 @@
+2023-10-06 16:10:31,187 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_user FROM User
+2023-10-06 16:10:31,246 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_activity FROM Activity
+2023-10-06 16:10:31,325 SQL PART2 DEBUG Executing: SELECT COUNT(*) as n_trackpoints FROM TrackPoint
+2023-10-06 16:11:04,684 SQL PART2 DEBUG Executing: 
+        WITH 
+            query AS (
+                        SELECT COUNT(trackpoint_id) AS trackpoint_count, activity_id FROM TrackPoint
+                        GROUP BY activity_id
+                    ),
+            activities AS (
+                SELECT user_id, activity_id FROM Activity
+                ),
+            joined_user AS (SELECT activities.user_id, query.trackpoint_count FROM query JOIN activities ON query.activity_id = activities.activity_id)
+
+            SELECT user_id, AVG(trackpoint_count) FROM joined_user
+            GROUP BY user_id
+        ;
+        
