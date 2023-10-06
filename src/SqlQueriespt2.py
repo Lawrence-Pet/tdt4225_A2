@@ -1,5 +1,6 @@
 from DbConnector import DbConnector
 from pet_log import get_logger
+import math
 logger = get_logger('SQL PART2')
 # Question 1: How many users, activities, and trackpoints are there in the dataset
 count_users_query = "SELECT COUNT(*) FROM User"
@@ -165,17 +166,24 @@ def query_to_db(db_connector: DbConnector, query = None):
         try:
             #db_connector.cursor.execute(query)
             logger.debug(f"Executing: {query}")
+            results=[]
             for result in db_connector.cursor.execute(query, multi=True):
                 if result.with_rows:
-                    print("Rows produced by statement '{}':".format(result.statement))
+                    results.append(result.fetchall())
                     print(result.fetchall())
                 else:
                     print("Number of rows affected by statement '{}': {}".format(
                     result.statement, result.rowcount))
-            return True
+            return True, results
         except Exception as e:
             logger.error(f"Error executing query '{query}':\n {e}")
-            return False
+            return False, None
         
     logger.error("No query was passed.")
-    return False
+    return False, None
+
+def calculate_lon_lat_distance(lon1, lon2, lat1, lat2):
+    dist_x = abs(lon1-lon2)
+    dist_y = abs(lat1-lat2)
+    total = math.sqrt(dist_x**2 + dist_y**2)
+    return total
