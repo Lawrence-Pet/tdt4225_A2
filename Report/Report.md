@@ -9,6 +9,7 @@ Students: Fredrik Andresen, Peter Lawrence
 **Briefly explain the task and the problems you have solved. How did you work as a group? If you used Git, a link to the repository would be nice.**
 
 
+
 Our task for this assigment was to clean the Geolife dataset and insert into a database we created. We were then supposed to perform a series of SQL queries on the data.
 We cleaned and inserted the data by using Python. The data was first extracted from the dataset and made into pandas dataframes in DataInsert.py. The dataframes were then cleaned and inserted into the database with DataInsert.py and SqlQueries.py. 
 
@@ -59,7 +60,6 @@ The number of users who have started an activity in one day and finished it in a
 The list of transportation mode, user id and duration for those activities are in the table above.
 
 ## Question 8
-
 For this task we tried numerous queries, we've ended up with some queries that we believe have potential but none of them has completed their queries as of now. However we have some suggestions to how such a query can look like: 
 
 ```sql
@@ -100,6 +100,7 @@ The top 15 users who have gained the most altitude are in the table above.
 
 The users who have traveled the longest total distance in one day for each transportation mode are in the table above.
 ## Question 11
+
 ![Query 11_1](pictures/Q11_1.png) ![Query 11_2](pictures/Q11_2.png) 
 
 
