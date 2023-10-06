@@ -59,5 +59,6 @@ For the question queries, we ended up doing all with pure SQL. It would perhaps 
 
 For question 10 we ended up with two users who had the same total distance for the same transportation mode. We decided to include both users in the answer, although we suspect they are duplicates in the database.
 
+Part2.ipynb has some details about the more complicated queries. 
 # Feedback
-The query for question 8 took an excessive amount of time to figure out and to execute. It would have been helpful if one of the hints gave an idea of how to solve the problem efficiently.
+The query for question 8 took an excessive amount of time to figure out and to execute (More than 1,5 hours to execute). It would have been helpful if one of the hints gave an idea of how to solve the problem efficiently.
