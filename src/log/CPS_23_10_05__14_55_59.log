@@ -13,3 +13,153 @@ SELECT DISTINCT transportation_mode FROM Activity;
 2023-10-05 14:58:24,684 SQL PART2 DEBUG Executing: 
 SELECT DISTINCT transportation_mode FROM Activity;
 
+2023-10-06 11:38:03,602 SQL PART2 DEBUG Executing: SELECT COUNT(*) FROM User
+2023-10-06 11:38:03,668 SQL PART2 DEBUG Executing: SELECT COUNT(*) FROM Activity
+2023-10-06 11:38:03,717 SQL PART2 DEBUG Executing: SELECT COUNT(*) FROM TrackPoint
+2023-10-06 11:38:05,216 SQL PART2 DEBUG Executing: 
+        WITH 
+            query AS (
+                        SELECT COUNT(trackpoint_id) AS trackpoint_count, activity_id FROM TrackPoint
+                        GROUP BY activity_id
+                    ),
+            activities AS (
+                SELECT user_id, activity_id FROM Activity
+                ),
+            joined_user AS (SELECT activities.user_id, query.trackpoint_count FROM query JOIN activities ON query.activity_id = activities.activity_id)
+
+            SELECT user_id, AVG(trackpoint_count) FROM joined_user
+            GROUP BY user_id
+        ;
+        
+2023-10-06 11:38:07,435 SQL PART2 DEBUG Executing: 
+        WITH 
+            query AS (
+                        SELECT COUNT(trackpoint_id) AS trackpoint_count, activity_id FROM TrackPoint
+                        GROUP BY activity_id
+                    ),
+            activities AS (
+                SELECT user_id, activity_id FROM Activity
+                ),
+            joined_user AS (SELECT activities.user_id, query.trackpoint_count FROM query JOIN activities ON query.activity_id = activities.activity_id)
+
+            SELECT user_id, MIN(trackpoint_count) FROM joined_user
+            GROUP BY user_id
+        ;
+        
+2023-10-06 11:38:09,300 SQL PART2 DEBUG Executing: 
+        WITH 
+            query AS (
+                        SELECT COUNT(trackpoint_id) AS trackpoint_count, activity_id FROM TrackPoint
+                        GROUP BY activity_id
+                    ),
+            activities AS (
+                SELECT user_id, activity_id FROM Activity
+                ),
+            joined_user AS (SELECT activities.user_id, query.trackpoint_count FROM query JOIN activities ON query.activity_id = activities.activity_id)
+
+            SELECT user_id, MAX(trackpoint_count) FROM joined_user
+            GROUP BY user_id
+        ;
+        
+2023-10-06 11:38:11,497 SQL PART2 DEBUG Executing: 
+SELECT user_id, COUNT(activity_id) AS result FROM Activity
+GROUP BY user_id
+ORDER BY result DESC
+LIMIT 15
+;
+
+2023-10-06 11:38:11,979 SQL PART2 DEBUG Executing: SELECT DISTINCT user_id FROM Activity WHERE transportation_mode='bus'
+2023-10-06 11:38:12,435 SQL PART2 DEBUG Executing: 
+SELECT user_id, COUNT(DISTINCT transportation_mode) AS mode_count
+FROM Activity
+GROUP BY user_id
+ORDER BY mode_count DESC
+LIMIT 10
+
+2023-10-06 11:38:12,884 SQL PART2 DEBUG Executing: 
+SELECT activity_id
+FROM Activity
+GROUP BY activity_id
+HAVING COUNT(activity_id) > 1
+
+2023-10-06 11:38:13,149 SQL PART2 DEBUG Executing: 
+WITH result AS (
+    SELECT user_id
+    FROM Activity
+    WHERE DATE(start_date_time) != DATE(end_date_time)
+)
+SELECT DISTINCT user_id FROM result
+;
+
+2023-10-06 11:38:14,111 SQL PART2 DEBUG Executing: 
+WITH difference_seconds AS (
+    SELECT user_id, transportation_mode, TIMESTAMPDIFF(SECOND, start_date_time, end_date_time) AS seconds
+    FROM Activity
+    WHERE DATE(start_date_time) != DATE(end_date_time)
+),
+
+diff_clock AS (
+    SELECT 
+        user_id, 
+        transportation_mode,
+        seconds, 
+        MOD(seconds, 60) AS seconds_p,
+        MOD(seconds, 60*60) AS minutes_p,
+        MOD(seconds, 60*60*24) AS hours_p
+    FROM
+        difference_seconds
+) 
+
+SELECT
+    user_id,
+    transportation_mode,
+    CONCAT(
+        FLOOR(seconds / 3600 / 24), ' days ',
+        FLOOR(hours_p / 3600), ' hours ',
+        FLOOR(minutes_p / 60), ' minutes ',
+        seconds_p, ' seconds '
+    ) AS duration
+FROM diff_clock;
+
+2023-10-06 11:38:15,658 SQL PART2 DEBUG Executing: 
+SELECT DISTINCT transportation_mode FROM Activity;
+
+2023-10-06 11:38:15,694 SQL PART2 DEBUG Executing: 
+                WITH transport_same_day AS (
+                    SELECT user_id, activity_id, transportation_mode FROM Activity WHERE transportation_mode = bus AND DATE(start_date_time) = DATE(end_date_time)
+                ), 
+
+                joined AS (SELECT 
+                            lon, 
+                            lat,
+                            date_time, 
+                            transport_same_day.activity_id, 
+                            transport_same_day.transportation_mode,
+                            transport_same_day.user_id 
+                            FROM TrackPoint 
+                            JOIN transport_same_day 
+                            ON TrackPoint.activity_id = transport_same_day.activity_id 
+                        )
+
+                SELECT * FROM joined;
+
+2023-10-06 11:38:15,724 SQL PART2 ERROR Error executing query '
+                WITH transport_same_day AS (
+                    SELECT user_id, activity_id, transportation_mode FROM Activity WHERE transportation_mode = bus AND DATE(start_date_time) = DATE(end_date_time)
+                ), 
+
+                joined AS (SELECT 
+                            lon, 
+                            lat,
+                            date_time, 
+                            transport_same_day.activity_id, 
+                            transport_same_day.transportation_mode,
+                            transport_same_day.user_id 
+                            FROM TrackPoint 
+                            JOIN transport_same_day 
+                            ON TrackPoint.activity_id = transport_same_day.activity_id 
+                        )
+
+                SELECT * FROM joined;
+':
+ 1054 (42S22): Unknown column 'bus' in 'where clause'

@@ -25,25 +25,38 @@ counted_tm AS (
         transport_modes
     GROUP BY 
         transportation_mode, user_id
+),
+
+max_for_each_user AS (
+    SELECT 
+        A.user_id, 
+        A.n_used AS max_count,
+        A.transportation_mode
+    FROM 
+        counted_tm AS A
+    JOIN (
+        SELECT 
+            user_id, 
+            MAX(n_used) AS max_n_used
+        FROM 
+            counted_tm
+        GROUP BY 
+            user_id
+    ) AS B
+    ON 
+        A.user_id = B.user_id 
+        AND A.n_used = B.max_n_used
 )
 
-SELECT 
-    DISTINCT A.user_id, 
-    A.n_used AS max_count,
-    A.transportation_mode
-FROM 
-    counted_tm AS A
-JOIN (
-    SELECT 
-        user_id, 
-        MAX(n_used) AS max_n_used
-    FROM 
-        counted_tm
-    GROUP BY 
-        user_id
-) AS B
-ON 
-    A.user_id = B.user_id 
-    AND A.n_used = B.max_n_used
+SELECT max_for_each_user.*
+FROM max_for_each_user
+WHERE max_for_each_user.transportation_mode = (
+    SELECT t2.transportation_mode
+    FROM max_for_each_user as t2
+    WHERE t2.user_id = max_for_each_user.user_id
+    ORDER BY rand()
+    LIMIT 1
+)
+ORDER BY max_for_each_user.user_id
 ;
 
