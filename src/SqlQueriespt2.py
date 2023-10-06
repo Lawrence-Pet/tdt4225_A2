@@ -64,67 +64,42 @@ HAVING DATE(start_date_time) != DATE(end_date_time)
 
 # Question 8: Find the number of users which have been close to each other in time and space
 users_close_in_time_and_space_query = """
-SELECT COUNT(DISTINCT user1) AS number_of_users
-SELECT DISTINCT A1.user_id AS user1, A2.user_id AS user2
-FROM Activity AS A1
-INNER JOIN Activity AS A2 ON A1.user_id <> A2.user_id
-    AND (ABS(TIMESTAMPDIFF(SECOND, A1.start_date_time, A2.start_date_time)) <= 30
-         OR ABS(TIMESTAMPDIFF(SECOND, A1.end_date_time, A2.end_date_time)) <= 30
-         OR A1.start_date_time BETWEEN A2.start_date_time AND A2.end_date_time
-         OR A1.end_date_time BETWEEN A2.start_date_time AND A2.end_date_time)
-    AND A1.user_id < A2.user_id
-LIMIT 50;
+SELECT 
+    user_id1,
+    user_id2,
+    T1.tr_activity_id AS activity_id1,
+    T2.tr_activity_id AS activity_id2,
+    T1.tr_date_time AS date_time1,
+    T2.tr_date_time AS date_time2,
+    T1.lat AS lat1,
+    T1.lon AS lon1,
+    T2.lat AS lat2,
+    T2.lon AS lon2
 
 
-
-
-    
-SELECT activity_id, lat, lon, date_time
-FROM TrackPoint
-WHERE ABS(lat) - 90 < 0.000000000001
-AND ABS(lon) - 180 < 0.000000000001
-LIMIT 50;
-
-
-
-
-GAMMAL funker dårlig
--- Find users with date_time close in time
-SELECT user_id, activity_id, MIN(date_time) AS min_time, MAX(date_time) AS max_time
-FROM Activity
-GROUP BY user_id, activity_id
-HAVING TIMESTAMPDIFF(SECOND, MIN(date_time), MAX(date_time)) <= 30;
-
--- Join the filtered results with TrackPoint table
-SELECT COUNT(DISTINCT user1.user_id) AS number_of_users
-FROM (
-    SELECT A1.user_id, T1.activity_id, T1.lat, T1.lon, T1.date_time
-    FROM TrackPoint AS T1
-    INNER JOIN (
-        SELECT user_id, activity_id, MIN(date_time) AS min_time, MAX(date_time) AS max_time
-        FROM Activity
-        GROUP BY user_id, activity_id
-        HAVING TIMESTAMPDIFF(SECOND, MIN(date_time), MAX(date_time)) <= 30
-    ) AS filtered_activities1
-    ON T1.activity_id = filtered_activities1.activity_id
-    WHERE T1.lat >= -90 AND T1.lat <= 90
-      AND T1.lon >= -180 AND T1.lon <= 180
-) AS user1
-INNER JOIN (
-    SELECT A2.user_id, T2.activity_id, T2.lat, T2.lon, T2.date_time
-    FROM TrackPoint AS T2
-    INNER JOIN (
-        SELECT user_id, activity_id, MIN(date_time) AS min_time, MAX(date_time) AS max_time
-        FROM Activity
-        GROUP BY user_id, activity_id
-        HAVING TIMESTAMPDIFF(SECOND, MIN(date_time), MAX(date_time)) <= 30
-    ) AS filtered_activities2
-    ON T2.activity_id = filtered_activities2.activity_id
-    WHERE T2.lat >= -90 AND T2.lat <= 90
-      AND T2.lon >= -180 AND T2.lon <= 180
-) AS user2
--- Rest of your query remains the same
-
+WITH close_time (user_id1, user_id2, activity_id1, activity_id2) AS (
+    SELECT DISTINCT A1.user_id AS user1, A2.user_id AS user2, A1.activity_id AS activity_id1, A2.activity_id AS activity_id2
+    FROM Activity AS A1
+    INNER JOIN Activity AS A2 ON A1.user_id <> A2.user_id
+        AND (ABS(TIMESTAMPDIFF(SECOND, A1.start_date_time, A2.start_date_time)) <= 30
+            OR ABS(TIMESTAMPDIFF(SECOND, A1.end_date_time, A2.end_date_time)) <= 30
+            OR A1.start_date_time BETWEEN A2.start_date_time AND A2.end_date_time
+            OR A1.end_date_time BETWEEN A2.start_date_time AND A2.end_date_time)
+        AND A1.user_id < A2.user_id
+),
+trackpoints (tr_activity_id, lat, lon, tr_date_time) AS (
+    SELECT activity_id, lat, lon, date_time
+    FROM TrackPoint
+)
+SELECT COUNT(DISTINCT user_id1) AS number_of_users
+    FROM close_time
+INNER JOIN trackpoints AS T1 ON activity_id1 = T1.tr_activity_id
+INNER JOIN trackpoints AS T2 ON activity_id2 = T2.tr_activity_id
+AND ST_Distance_Sphere(
+        POINT(T1.lon, T1.lat),
+        POINT(T2.lon, T2.lat)
+        ) <= 50
+INTO OUTFILE '/var/lib/mysql-files/output.txt';
 """
 
 # Question 9: Find the top 15 users who have gained the most altitude meters
