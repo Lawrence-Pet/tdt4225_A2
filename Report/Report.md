@@ -6,6 +6,8 @@ Students: Fredrik Andresen, Peter Lawrence
 
 # Introduction
 [Git repository](https://github.com/Lawrence-Pet/tdt4225_A2) 
+**Briefly explain the task and the problems you have solved. How did you work as a group? If you used Git, a link to the repository would be nice.**
+
 
 
 Our task for this assigment was to clean the Geolife dataset and insert into a database we created. We were then supposed to perform a series of SQL queries on the data.
@@ -58,23 +60,9 @@ The number of users who have started an activity in one day and finished it in a
 The list of transportation mode, user id and duration for those activities are in the table above.
 
 ## Question 8
-
-For thistask we tried numerous queries, we've ended up with some queries that we believe have potential but none of them has completed their queries as of now. However we have some suggestions to how such a query can look like: 
+For this task we tried numerous queries, we've ended up with some queries that we believe have potential but none of them has completed their queries as of now. However we have some suggestions to how such a query can look like: 
 
 ```sql
-SELECT 
-    user_id1,
-    user_id2,
-    T1.tr_activity_id AS activity_id1,
-    T2.tr_activity_id AS activity_id2,
-    T1.tr_date_time AS date_time1,
-    T2.tr_date_time AS date_time2,
-    T1.lat AS lat1,
-    T1.lon AS lon1,
-    T2.lat AS lat2,
-    T2.lon AS lon2
-
-
 WITH close_time (user_id1, user_id2, activity_id1, activity_id2) AS (
     SELECT DISTINCT A1.user_id AS user1, A2.user_id AS user2, A1.activity_id AS activity_id1, A2.activity_id AS activity_id2
     FROM Activity AS A1
@@ -102,6 +90,7 @@ AND ST_Distance_Sphere(
 
 Other possible queries can be found in the folder ```src/PART2_individual_SQL```
 
+
 ## Question 9
 ![Query 9](pictures/Q9.png)
 
@@ -123,6 +112,9 @@ The users who have registered transportation modes and their most used transport
 
 
 # Discussion
+
+**Discuss your solutions. Did you do anything differently than how it was explained in the assignment sheet, in that case why and how did that work? Were there any pain points or problems? What did you learn from this assignment?**
+
 We did not do anything differently than how it was explained in the assignment sheet. 
 
 For the question queries, we ended up doing all of them with pure SQL. It would perhaps have been easier to do some of them with Python, as we are more familiar with that. However, we decided to try to do them all with SQL only. Some pain points were that some of the queries became fairly long and complicated. This made them hard to read and debug when they didn't work. Some of them also took a long time to run, which severly slowed down the process of debugging.
