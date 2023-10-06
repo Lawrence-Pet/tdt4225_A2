@@ -1,0 +1,1 @@
+2023-10-04 14:10:40,181 sql_queries ERROR Error getting activities for user '175': Could not process parameters: str(175), it must be of type list, tuple or dict

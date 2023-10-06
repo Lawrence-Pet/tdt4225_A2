@@ -1,0 +1,6 @@
+2023-10-04 14:50:38,746 sql_queries DEBUG Table 'User' created successfully.
+2023-10-04 14:50:38,753 sql_queries DEBUG Table 'Activity' created successfully.
+2023-10-04 14:50:38,768 sql_queries DEBUG Table 'TrackPoint' created successfully.
+2023-10-04 14:50:38,776 sql_queries ERROR Error inserting data into table 'User (user_id, has_labels)': 1062 (23000): Duplicate entry '175' for key 'User.PRIMARY'
+2023-10-04 14:50:38,791     main ERROR Error in adding user:
+ {e}
